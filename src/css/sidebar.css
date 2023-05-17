@@ -1,0 +1,22 @@
+.active-button {
+    color: rgb(19, 200, 255) ;
+     /* Set the desired color for active buttons */
+    /* Add any other styling you want for active buttons */
+    --ion-background-color: var(--ion-color-light);
+    
+  }
+
+
+#icon:hover{
+
+color: rgb(19, 200, 255) !important;
+}
+
+
+#side{
+    color: var(--ion-color-light);
+}
+
+#signout:hover{
+cursor: pointer;
+}

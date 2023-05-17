@@ -1,24 +1,72 @@
 import logo from './logo.svg';
 import './App.css';
+import { Sidebar} from 'flowbite-react';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+   <div className="w-fit">
+  <Sidebar aria-label="Sidebar with logo branding example">
+    <Sidebar.Logo
+      href="#"
+      img="favicon.png"
+      imgAlt="Flowbite logo"
+      
+    >
+   
+      Flowbite
+     
+    </Sidebar.Logo>
+    <Sidebar.Items>
+      <Sidebar.ItemGroup>
+        <Sidebar.Item
+          href="#"
+        
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item
+          href="#"
+        
+        >
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item
+          href="#"
+        
+        >
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item
+          href="#"
+        
+        >
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item
+          href="#"
+        
+        >
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item
+          href="#"
+        
+        >
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item
+          href="#"
+        
+        >
+          Dashboard
+        </Sidebar.Item>
+       
+      </Sidebar.ItemGroup>
+    </Sidebar.Items>
+  </Sidebar>
+</div>
+    </>
   );
 }
 
