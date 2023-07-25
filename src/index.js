@@ -1,27 +1,20 @@
 import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Header from './components/header';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  ScrollRestoration,
-} from "react-router-dom";
-import { Navigate } from 'react-router';
-import { app,auth, firestore } from './components/firebase';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
-import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom';
+import Header from './components/header';
 import ErrorPage from './pages/error';
-import Home from './components/home';
+import Home from './components/Home';
 import Login from './components/login';
 import { IonApp, setupIonicReact } from '@ionic/react';
 import Profile from './pages/profile';
 import Sidebarx from './components/sidebar';
 import Dashboard from './pages/dashboard';
 import { NextUIProvider } from '@nextui-org/react';
+import { auth } from './components/firebase';
 setupIonicReact();
 
 

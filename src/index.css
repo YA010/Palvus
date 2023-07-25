@@ -50,7 +50,7 @@ body {
 	  --ion-color-tertiary-shade: #0d80e0;
 	  --ion-color-tertiary-tint: #279cff;
   
-	  --ion-color-success: #181818;
+	  --ion-color-success: #2b2b2b;
 	  --ion-color-success-rgb: 45,211,111;
 	  --ion-color-success-contrast: #2591f5;
 	  --ion-color-success-contrast-rgb: 0,0,0;
@@ -79,13 +79,13 @@ body {
 	  --ion-color-medium-tint: #026fdc;
   
 	  --ion-color-light: #ffffff;
-	  --ion-color-light-rgb: 244,245,248;
+	  --ion-color-light-rgb: #000000;
 	  --ion-color-light-contrast: #000000;
-	  --ion-color-light-contrast-rgb: 0,0,0;
+	  --ion-color-light-contrast-rgb: #000000;
 	  --ion-color-light-shade: #d7d8da;
 	  --ion-color-light-tint: #f5f6f9;
 
-	  --ion-color-dark: #262626;
+	  --ion-color-dark: #272727;
 	  --ion-color-dark-rgb: 244,245,248;
 	  --ion-color-dark-contrast: #3a3a3a;
 	  --ion-color-dark-contrast-rgb: 0,0,0;
@@ -94,6 +94,24 @@ body {
   
   }
   
+
+
+.card-header{
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: top;
+}
+.card-header:after{
+  content:'';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgb(5,85,134), rgba(181,181,181, 0.1));
+}
+
+
+
   /* Fallback for older browsers or manual mode */
   body.dark {
 	/* Dark mode variables go here */
@@ -103,10 +121,10 @@ body {
 	--ion-color-success-contrast: #f5efef;
 	--ion-color-tertiary: black;
 	--ion-color-primary-contrast-rgb: 27, 171, 255;
-	--ion-color-light: rgb(24, 24, 24);
+	--ion-color-light: rgb(34, 34, 34);
 	--ion-color-secondary: #2a2a2a;
 	--ion-color-success: #032570;
-	--ion-color-light-contrast: #2a2a2a;
+	--ion-color-light-contrast: #f3f3f3;
 	--ion-color-medium: #0160b9;
 	--ion-color-medium-contrast-rgb: #0273dd;
 	  --ion-color-medium-shade: #0752ae;
@@ -174,9 +192,7 @@ body {
   
   }
   
-  #showcard{
-	border:  1px var(--ion-color-tertiary) solid;
-  }
+ 
   
   ion-toast.custom-toast:hover{
   
