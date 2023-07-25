@@ -4,6 +4,8 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from './firebase'
+import { Navbar, Text, Avatar, Dropdown } from "@nextui-org/react";
+import { IonContent } from '@ionic/react'
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -32,65 +34,63 @@ function AuthenticationWrapper({ children }) {
 
 export default function Header() {
   const [user, loading, error] = useAuthState(auth);
+  const location = useLocation();
+  const collapseItems = [
+    "Profile",
+    "Dashboard",
+    "Activity",
+    "Analytics",
+    "System",
+    "Deployments",
+    "My Settings",
+    "Team Settings",
+    "Help & Feedback",
+    "Log Out",
+  ];
   return (
     <AuthenticationWrapper>
-    <div className="min-h-full">
-    <Disclosure as="nav" className="sticky" >
-      {({ open }) => (
-        <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
-            <div className="relative flex h-16 items-center justify-between ">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
-              
-              </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                <a href={`/`}>
-                  <img
-                    className="block h-8 w-auto lg:hidden"
-                    src={require('../images/mimcologo.png')}
-                    alt="Your Company"
-                  />
-                  </a>
-                  <a href={`/`}>
-                  <img
-                    className="hidden h-8 w-auto lg:block"
-                    src={require('../images/mimcologo.png')}
-                    alt="Your Company"
-                  />
-</a>
-                </div>
-              
-                
-              </div>
 
-              {/* make sure to add useauth() here to change login to user icon if logged in   */}
-              {!loading && user ? <>
-                <div className="py-6">
-                  
-                  <a href={`/dashboard`} className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Dashboard</a>
-                 
-              </div>
-              </> : loading && !user ? <>  </> : <>  <div className="py-6">
-                  
-                    <Link to={`login`} className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"> Log in</Link>
-                   
-                </div></>}
-             
-
-              
-            </div>
-          </div>
+      <Navbar  variant="sticky">
+        
+        <Navbar.Brand
+       
+          css={{
+            "@xs": {
+              w: "12%",
+            },
+          }}
+        >
+           <img
+                    className="h-12 w-auto lg:block"
+                    src={require('../images/palvus.png')}
+                    alt="Palvus"
+                  />
+        
+        </Navbar.Brand>
+      
+        <Navbar.Content id="navbar"
+          css={{
+            "@xs": {
+              w: "19%",
+              jc: "flex-end",
+            },
+          }}
+        > 
+         {user && !loading ?  < > 
+        <Navbar.Link style={{fontWeight:"1000"}} as={Link} to="/dashboard" isActive={location.pathname === '/dashboard'}>
+        Dashboard
+      </Navbar.Link>
+      </> : <>  <Navbar.Link as={Link} to="/login" isActive={location.pathname === '/login'}>
+        Log In
+      </Navbar.Link></>}
          
-        </>
-      )}
-    </Disclosure>
-    <div id="detail">
+        </Navbar.Content>
+        
+      </Navbar>
+  
+      
       <Outlet/>
-    </div>
-   
-   </div>
-   </AuthenticationWrapper>
-  )
+     
+    </AuthenticationWrapper>
+  );
 }

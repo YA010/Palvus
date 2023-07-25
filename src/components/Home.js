@@ -2,7 +2,10 @@ import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/2
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline'
 import { IonCard, IonCardContent, IonCardHeader } from '@ionic/react'
+import { HeartBrokenRounded, SpaOutlined } from '@mui/icons-material';
 
+import axios from 'axios';
+import { BookOpenIcon } from 'lucide-react';
 
   const stats = [
     { id: 1, name: 'Transactions every 24 hours', value: '44 million' },
@@ -157,6 +160,7 @@ const includedFeatures = [
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
         >
+          
           <div
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style={{
@@ -165,7 +169,8 @@ const includedFeatures = [
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-36">
+      
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Announcing our next round of funding.{' '}
@@ -176,12 +181,14 @@ const includedFeatures = [
             </div>
           </div>
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Data to enrich your online business
-            </h1>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Palvus - Immersive Conversations Reimagined</h2>
+            
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-              fugiat veniam occaecat fugiat aliqua.
+        
+            Chat with a virtual Einstein about physics. Learn from Socrates. 
+            Sherlock Holmes helps you solve mysteries. We make relating to history’s greatest figures fun and accessible. 
+            <br></br>
+            Our interactive AI characters transform passive content into immersive experiences. Writers, educate, entertainers - bring your characters into the future with Palvus.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
@@ -245,11 +252,10 @@ const includedFeatures = [
           <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
             <div className="lg:pr-4">
               <div className="lg:max-w-lg">
-                <p className="text-base font-semibold leading-7 text-indigo-600">Deploy faster</p>
-                <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">A better workflow</h1>
+                <p className="text-base font-semibold leading-7 text-indigo-600">Interact with Legends</p>
+                <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Converse with your favorite personalities</h1>
                 <p className="mt-6 text-xl leading-8 text-gray-700">
-                  Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam
-                  eget aliquam. Quisque id at vitae feugiat egestas.
+                At Palvus, we're reimagining how people engage with iconic figures. Our advanced AI lets you have natural conversations with virtual versions of your favorite historical and fictional personalities.
                 </p>
               </div>
             </div>
@@ -265,47 +271,45 @@ const includedFeatures = [
             <div className="lg:pr-4">
               <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
                 <p>
-                  Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet
-                  vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque
-                  erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris
-                  semper sed amet vitae sed turpis id.
+                At Palvus, we utilize Gen-AI to enable immersive conversational experiences with virtual personalities. 
+                Our platform analyzes speech and generates relevant dialogue, giving each character their own unique personality and knowledge. This allows you to have true back-and-forth conversations with your favorite icons. Whether you want to debate philosophy with Socrates, discuss physics with Einstein, or solve crimes with Sherlock Holmes, Palvus makes it possible through AI-powered interactions.
+                 Our platform transforms passive content into interactive experiences by bringing legendary characters to life.
                 </p>
                 <ul role="list" className="mt-8 space-y-8 text-gray-600">
                   <li className="flex gap-x-3">
-                    <CloudArrowUpIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                    <BookOpenIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
                     <span>
-                      <strong className="font-semibold text-gray-900">Push to deploy.</strong> Lorem ipsum, dolor sit amet
-                      consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                      blanditiis ratione.
+                      <strong className="font-semibold text-gray-900">Education.</strong> Learn maths from Einstein or learn a new langauge from your faviorite star . Their experiences and wisdom come to life through AI. 
                     </span>
                   </li>
                   <li className="flex gap-x-3">
-                    <LockClosedIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                    <SpaOutlined className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
                     <span>
-                      <strong className="font-semibold text-gray-900">SSL certificates.</strong> Anim aute id magna aliqua
-                      ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
+                      <strong className="font-semibold text-gray-900">Entertainment.</strong> Discover fascinating facts, learn new skills, and explore various topics with your faviorite character. 
+                      Go on a adventure with batman or discover puzzles with indiana jones , the posibilities are endless
                     </span>
                   </li>
                   <li className="flex gap-x-3">
-                    <ServerIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                    <HeartBrokenRounded className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
                     <span>
-                      <strong className="font-semibold text-gray-900">Database backups.</strong> Ac tincidunt sapien
-                      vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
-                    </span>
+<strong className="font-semibold text-gray-900">Your Personal Support.</strong> Connect with a virtual companion that listens, understands, and empathizes with you. Whether you're seeking a friendly chat or a comforting presence, our virtual companion is here for you.
+</span>
                   </li>
                 </ul>
                 <p className="mt-8">
-                  Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie auctor
-                  fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et ultrices hac
-                  adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.
-                </p>
-                <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">No server? No problem.</h2>
-                <p className="mt-6">
-                  Id orci tellus laoreet id ac. Dolor, aenean leo, ac etiam consequat in. Convallis arcu ipsum urna nibh.
-                  Pharetra, euismod vitae interdum mauris enim, consequat vulputate nibh. Maecenas pellentesque id sed
-                  tellus mauris, ultrices mauris. Tincidunt enim cursus ridiculus mi. Pellentesque nam sed nullam sed diam
-                  turpis ipsum eu a sed convallis diam.
-                </p>
+  <strong className="font-semibold text-gray-900">Plus so much more functionalities coming soon for an enriched experience.</strong> Palvus goes beyond . Engage soon with a wide array of interactive features, including:
+</p>
+<ul className="list-disc list-inside mt-4">
+  <li>Interactive Games and Quizzes: Challenge your virtual companion to games, puzzles, and quizzes for hours of fun and mental stimulation.</li>
+  <li>Productivity Boost: Stay organized and motivated with reminders, to-do lists, and goal tracking.</li>
+  <li>Health and Wellness Support: Receive personalized health tips, mindfulness exercises, and fitness suggestions to lead a balanced life.</li>
+  <li>Creative Expression: Engage in creative activities like storytelling, poetry, or drawing to express yourself.</li>
+  <li>And much more: Constantly evolving to meet your needs and interests, Palvus is designed to be your ultimate digital companion.</li>
+</ul>
+<br></br>
+Our virtual companion is here to enhance your daily life, making each interaction a delightful and enriching experience. Let's embark on this journey together!
+               
+              
               </div>
             </div>
           </div>
@@ -365,6 +369,7 @@ const includedFeatures = [
   
  
   export default function Home() {
+    
     return (
       <>
       <Centered/>

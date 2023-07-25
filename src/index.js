@@ -7,6 +7,7 @@ import Header from './components/header';
 import {
   createBrowserRouter,
   RouterProvider,
+  ScrollRestoration,
 } from "react-router-dom";
 import { Navigate } from 'react-router';
 import { app,auth, firestore } from './components/firebase';
@@ -14,21 +15,20 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import ErrorPage from './pages/error';
-import Home from './components/Home';
+import Home from './components/home';
 import Login from './components/login';
 import { IonApp, setupIonicReact } from '@ionic/react';
 import Profile from './pages/profile';
-import Sidebar from './components/sidebar';
+import Sidebarx from './components/sidebar';
 import Dashboard from './pages/dashboard';
-import { useLocation } from 'react-router-dom';
+import { NextUIProvider } from '@nextui-org/react';
 setupIonicReact();
-
-
-
 
 
 function RenderApp() {
   const [user, loading, error] = useAuthState(auth);
+  
+  
   const router = createBrowserRouter([
     {
       path: "/",
@@ -52,7 +52,8 @@ function RenderApp() {
     },
     {
       path: "/dashboard",
-      element: <Sidebar/>,
+      element: <Sidebarx/>,
+     
       errorElement: <ErrorPage/>,
       action: () => {
         // You can also put the authentication logic directly here
@@ -73,8 +74,9 @@ function RenderApp() {
     },
     {
       path: "/profile",
-      element: <Sidebar/>,
+      element: <Sidebarx/>,
       errorElement: <ErrorPage/>,
+     
       children: [
         {
           errorElement: <ErrorPage />,
@@ -96,16 +98,17 @@ function RenderApp() {
     <>
   
      <IonApp>
-      
+   
 
       <React.StrictMode>
 
     
     <RouterProvider router={router} />
-  
+    
   </React.StrictMode>
-
+ 
   </IonApp>
+ 
    </>
   );
 }

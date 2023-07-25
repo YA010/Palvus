@@ -1,16 +1,34 @@
+'use client';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
-import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { IonBackButton, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonLabel, IonMenu, IonMenuButton, IonMenuToggle, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react";
-import { BookOnlineRounded, DesktopMacRounded, HelpCenterRounded, Person2Outlined, Person2Rounded, Person3Rounded } from "@mui/icons-material";
+import { Link, NavLink, Outlet, ScrollRestoration, useLocation, useNavigate } from "react-router-dom";
+import { IonBackButton, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonLabel, IonMenu, IonMenuButton, IonMenuToggle, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react";
+import { AddBoxRounded, ArrowUpwardOutlined, ArrowUpwardRounded, BookOnlineRounded, ChatBubbleOutline, ChatBubbleOutlineRounded, ChatBubbleRounded, CopyrightRounded, DarkModeRounded, DeleteOutlineRounded, DesktopMacRounded, Facebook, GitHub, HelpCenterRounded, HomeMiniRounded, HouseRounded, Instagram, LightModeRounded, MenuBookRounded, Person2Outlined, Person2Rounded, Person3Rounded, Twitter } from "@mui/icons-material";
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { Navbar, Text, Avatar, Dropdown, User } from "@nextui-org/react";
+import { Collapse,  Grid, } from "@nextui-org/react";
 import moment from "moment";
 import { IonSplitPane } from "@ionic/react";
 import Header from "./header";
-import Dash from "../sections/header";
+
+import axios from "axios";
 import '../css/sidebar.css'
-import { Avatar } from "flowbite-react";
+import { Footer } from "flowbite-react";
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { Typography } from "@mui/material";
+import { Button } from "flowbite-react";
+
+import { useWindowScroll } from '@mantine/hooks';
+import { Affix, Transition, rem } from '@mantine/core';
+
 function AuthenticationWrapper({ children }) {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
@@ -30,7 +48,100 @@ function AuthenticationWrapper({ children }) {
 
   return children;
 }
-export default function Sidebar() {
+
+
+export default function Sidebarx() {
+
+ 
+  
+  function Demo() {
+    const [scroll, scrollTo] = useWindowScroll();
+  
+    return (
+      <>
+        <Text align="center">Affix is located at the bottom of the screen, scroll to see it</Text>
+        <Affix position={{ bottom: rem(20), right: rem(20) }}>
+          <Transition transition="slide-up" mounted={scroll.y > 0}>
+            {(transitionStyles) => (
+              <Button
+                leftIcon={<ArrowUpwardRounded />}
+                style={transitionStyles}
+                onClick={() => scrollTo({ y: 0 })}
+              ><ArrowUpwardOutlined />
+                Scroll to top
+              </Button>
+            )}
+          </Transition>
+        </Affix>
+      </>
+    );
+  }
+
+const systemMessage = "You are Palvus, your personal AI-powered doctor companion.\n\nWho you are:\n- You always end every response with 'This is not medical advice and is merely informational, please seek proper medical advice/attention' or 'Please keep in mind that while I can offer informational advice, I'm not a substitute for a licensed medical professional and cannot provide medical advice.'\n- You are an AI-powered medical assistant.\n- You were created to ask the user for information about their condition and continue asking about any further health/medical information until the user says they don't have any other conditions to address. Then, offer personalized health advice and medical information with a disclaimer of not being a medical professional.\n- You are knowledgeable, compassionate, and dedicated to improving health outcomes.\n- You always ask the user for more information about their condition and continue asking until the user says they don't have any other conditions to address.";
+
+const App = () => {
+  const [userInput, setUserInput] = useState("");
+
+  const handleInputChange = (event) => {
+    setUserInput(event.target.value);
+  }
+
+  const makeAPIRequest = async () => {
+    const options = {
+      method: 'POST',
+      url: 'https://openai80.p.rapidapi.com/chat/completions',
+      headers: {
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': '57e455a35cmsh9a02f7993bd1d89p1dd6cfjsnc3b24add851e',
+        'X-RapidAPI-Host': 'openai80.p.rapidapi.com'
+      },
+      data: {
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {
+            role: 'system',
+            content: "You are Palvus, your personal AI-powered doctor companion. Who you are:\n- You always end every response with 'This is not medical advice and is merely informational, please seek proper medical advice/attention' or 'Please keep in mind that while I can offer informational advice, I'm not a substitute for a licensed medical professional and cannot provide medical advice.'\n- You are an AI-powered medical assistant.\n- You were created to ask the user for information about their condition and continue asking about any further health/medical information until the user says they don't have any other conditions to address. Then, offer personalized health advice and medical information with a disclaimer of not being a medical professional.\n- You are knowledgeable, compassionate, and dedicated to improving health outcomes.\n- You always ask the user for more information about their condition and continue asking until the user says they don't have any other conditions to address."
+          },
+          {
+            role: 'user',
+            content: 'hey'
+          }
+        ]
+      }
+    };
+    
+
+    try {
+      const response = await axios.request(options);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  
+
+  return (
+    <>
+      <input type="text" value={userInput} onChange={handleInputChange} />
+      <button onClick={makeAPIRequest}>Make API Request</button>
+    </>
+  );
+}
+
+
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  
+
+  // Listen for changes to the prefers-color-scheme media query
+  prefersDark.addListener((mediaQuery) => toggleDarkTheme(mediaQuery.matches));
+
+  // Add or remove the "dark" class based on if the media query matches
+  function toggleDarkTheme(shouldAdd) {
+    document.body.classList.toggle('dark', shouldAdd);
+   
+  }
+  toggleDarkTheme(prefersDark.matches);
     const [user, loading, error] = useAuthState(auth);
     const [activeButton, setActiveButton] = useState(null);
    const location = useLocation()
@@ -43,90 +154,166 @@ export default function Sidebar() {
       setActiveButton(matchingButton);
     }
   }, [location]);
+
+  const [side,setSide] = useState(false);
+
+
+  const [width,setWidth] = useState("");
+  function getSize() {
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(()=> 
+{
+window.addEventListener('resize',getSize);
+if(width < 400) {
+setSide(true)
+}
+else{
+  setSide(false)
+}
+return () =>{
+  window.removeEventListener('resize',getSize())
+}
+
+},[window.innerWidth]
+)
+ 
     return (
 <> 
 <AuthenticationWrapper>
   {user && !loading ?  <> 
+
+
   
-    <IonSplitPane when="md" contentId="main">
-<IonMenu contentId="main"  >
-<IonHeader >
-  <IonToolbar>
-  <NavLink id="icons" to="/dashboard">
-  <a  class="flex items-center pl-1.5 ">
-  <img
-                   class="h-6 mr-3 sm:h-7"
-                    src={require('../images/mimcologo.png')}
-                    alt="Your Company"
-                  />
-        
-      </a>
-      </NavLink>
-  </IonToolbar>
-</IonHeader>
-
-<IonContent>
-  <div id="side" class="px-3 py-4 ">
+  
+    <Navbar isBordered variant="sticky">
+    <Navbar.Content showIn="xs">
+    <Dropdown placement="bottom-left">
+            <Navbar.Item>
+              <Dropdown.Trigger>
+                <Avatar
+                  bordered
+                  as="button"
+                  color="primary"
+                  size="md"
+                  src={require('../images/mimcologo.png')}
+                />
+              </Dropdown.Trigger>
+            </Navbar.Item>
+            <Dropdown.Menu
+              aria-label="User menu actions"
+              color="secondary"
+              
+            >
+              <Dropdown.Item key="profile" css={{ height: "$18" }}>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  Signed in as
+                </Text>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  zoey@example.com
+                </Text>
+              </Dropdown.Item>
+              <Dropdown.Item key="settings" withDivider>
+                My Settings
+              </Dropdown.Item>
+              <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
+              <Dropdown.Item key="analytics" withDivider>
+                Analytics
+              </Dropdown.Item>
+              <Dropdown.Item key="system">System</Dropdown.Item>
+              <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
+              <Dropdown.Item key="help_and_feedback" withDivider>
+                Help & Feedback
+              </Dropdown.Item>
+              <Dropdown.Item key="logout" withDivider color="error">
+                Log Out
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+         </Navbar.Content>
+          <Navbar.Brand
+       
+      
+     >
+        <img
+                 className="h-12 w-auto lg:block"
+                 src={require('../images/palvus.png')}
+                 alt="Palvus"
+               />
      
-      <ul class="space-y-2 font-medium">
-         <li>
-         <NavLink id="icons" to="/dashboard">
-            <a className={activeButton === '/dashboard' ? 'flex items-center p-2 bg-blue-100 text-blue-500 rounded-lg dark:text-white hover:bg-blue-100 hover:text-gray-800  dark:hover:bg-gray-700' : 'flex items-center p-2 text-gray-100 rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800  dark:hover:bg-gray-700'} >
-               
-               <svg aria-hidden="true" class="w-6 h-6 text-grey-100 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-               <span class="flex-1 ml-3 whitespace-nowrap">Dashboard</span>
-               <span class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
-            </a>
-            </NavLink>
-         </li>
-         <li>
-         <NavLink id="icons" to="/profile">
-            <a className={activeButton === '/profile' ? 'flex items-center p-2 bg-blue-100 text-blue-500 rounded-lg dark:text-white hover:bg-blue-100 hover:text-gray-800  dark:hover:bg-gray-700' : 'flex items-center p-2 text-gray-100 rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800  dark:hover:bg-gray-700'} >
-               
-               <svg aria-hidden="true" class="w-6 h-6 text-grey-100 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-               <span class="flex-1 ml-3 whitespace-nowrap">Profile</span>
-               <span class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
-            </a>
-            </NavLink>
-         </li>
+     </Navbar.Brand>
         
-        
-      </ul>
+        <Navbar.Content enableCursorHighlight hideIn="xs" variant="highlight-rounded">
 
-    
-      <div id="dropdown-cta" class="p-4 mt-6 rounded-lg bg-blue-50 dark:bg-blue-900" role="alert">
-         <div class="flex items-center mb-3">
-         <a  class="flex items-center ">
-  <img
-                   class="h-6 mr-3 sm:h-10"
-                    src={user.photoURL}
-                    alt="Your Company"
-                  />
-        
-      </a>
-      <p style={{overflowWrap: "break-word",fontWeight:"700"}} class="mb-3 text-sm text-blue-800 dark:text-blue-400">{user.displayName}</p>
-         </div>
-         
-         <p style={{overflowWrap: "break-word", fontWeight:"600"}} class="mb-3 text-sm text-blue-900 dark:text-blue-400">@{user.email}</p>
-         <p style={{overflowWrap: "break-word"}} class="mb-3 text-sm text-blue-900 dark:text-blue-400">joined {moment(user.metadata.creationTime).fromNow()}</p>
-         <IonButton onClick={() => signOut(auth)}>Log out</IonButton>
-               </div>
+        <Link to='/dashboard'>
+          <Navbar.Link  isActive={location.pathname === '/dashboard'} > Dashboard</Navbar.Link>
+         </Link>
+         <Link to='/dashboard'>
+          <Navbar.Link  isActive={location.pathname === '/profile'} > Dashboard</Navbar.Link>
+         </Link>
+          
+        </Navbar.Content>
+        <Navbar.Content>
+        <Dropdown placement="bottom-right">
+            <Navbar.Item>
+              <Dropdown.Trigger>
+                <Avatar
+                  bordered
+                  as="button"
+                  color="primary"
+                  size="md"
+                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                />
+              </Dropdown.Trigger>
+            </Navbar.Item>
+            <Dropdown.Menu
+              aria-label="User menu actions"
+              color="secondary"
+              
+            >
+              <Dropdown.Item key="profile" css={{ height: "$18" }}>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  Signed in as
+                </Text>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  zoey@example.com
+                </Text>
+              </Dropdown.Item>
+              <Dropdown.Item key="settings" withDivider>
+                My Settings
+              </Dropdown.Item>
+              <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
+              <Dropdown.Item key="analytics" withDivider>
+                Analytics
+              </Dropdown.Item>
+              <Dropdown.Item key="system">System</Dropdown.Item>
+              <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
+              <Dropdown.Item key="help_and_feedback" withDivider>
+                Help & Feedback
+              </Dropdown.Item>
+              <Dropdown.Item key="logout" withDivider color="error">
+                Log Out
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Navbar.Content>
+      
+      </Navbar>
+     
+        <Outlet/>
+       
 
-   </div>
-   </IonContent>
 
 
-         
-</IonMenu>
-
-<IonContent id="main">
-      <Outlet/>
-      </IonContent>
-           
-    </IonSplitPane></> : <> </>}
 
 
-    </AuthenticationWrapper>
+      
+  
+
+
+   <Demo/> </> : <> </>}
+</AuthenticationWrapper>
 
 </>
     )

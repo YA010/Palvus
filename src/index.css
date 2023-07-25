@@ -1,19 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	word-break: break-word;
+	background-color: var(--ion-color-light);;
+}
 .text-dark {
 	border-radius: 2vw 2vw 2vw 2vw;
 	--bs-text-opacity: 1;
 	color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
   }
+  .nextui-c-egxOLa{
+	border-radius: 1vw;
+  }
+  .nextui-c-hhqfap-ieQnWyR-css{
+	background: none !important;
+	
+  }
+
+  .nextui-c-dWWWSv-dvkEXO-shadow-true{
+	padding: 0 !important;
+  }
+
+  .nextui-c-hhqfap-kAwfsS-disableShadow-false{
+	box-shadow: none !important;
+  }
   
+
   :root {
-	  --ion-color-primary: rgb(27, 171, 255);
+	  --ion-color-primary: rgb(255, 255, 255);
 	  --ion-color-primary-rgb: NaN,27,171;
-	  --ion-color-primary-contrast: #ffffff;
+	  --ion-color-primary-contrast: #898989;
 	  --ion-color-primary-contrast-rgb: 209, 209, 209;
-	  --ion-color-primary-shade: #NaN1896;
-	  --ion-color-primary-tint: #NaN32b3;
+	  --ion-color-primary-shade: #aaaaaa;
+	  --ion-color-primary-tint: #bebebe;
   
 	  --ion-color-secondary: #f6f6f6;
 	  --ion-color-secondary-rgb: 29,29,32;
@@ -63,6 +84,13 @@
 	  --ion-color-light-contrast-rgb: 0,0,0;
 	  --ion-color-light-shade: #d7d8da;
 	  --ion-color-light-tint: #f5f6f9;
+
+	  --ion-color-dark: #262626;
+	  --ion-color-dark-rgb: 244,245,248;
+	  --ion-color-dark-contrast: #3a3a3a;
+	  --ion-color-dark-contrast-rgb: 0,0,0;
+	  --ion-color-dark-shade: rgb(31, 31, 32);
+	  --ion-color-dark-tint: rgb(40, 41, 42);
   
   }
   
@@ -70,14 +98,15 @@
   body.dark {
 	/* Dark mode variables go here */
 	--ion-color-secondary-contrast: #ffffff;
-	--ion-color-primary: #1a1a1b;
+	--ion-color-primary: rgb(48, 48, 48);
+	--ion-color-dark: rgb(255, 255, 255);
 	--ion-color-success-contrast: #f5efef;
 	--ion-color-tertiary: black;
 	--ion-color-primary-contrast-rgb: 27, 171, 255;
-	--ion-color-light: rgb(0, 16, 46);
+	--ion-color-light: rgb(24, 24, 24);
 	--ion-color-secondary: #2a2a2a;
 	--ion-color-success: #032570;
-	--ion-color-light-contrast: #01194c;
+	--ion-color-light-contrast: #2a2a2a;
 	--ion-color-medium: #0160b9;
 	--ion-color-medium-contrast-rgb: #0273dd;
 	  --ion-color-medium-shade: #0752ae;
@@ -90,23 +119,45 @@
 	  --ion-color-warning-tint: #ffffff;
   }
   
+
+
   #side{
     --ion-background-color: var(--ion-color-light);
 }
-  ion-menu {
-	--ion-background-color: var(--ion-color-tertiary);
-	
+ 
+.nextui-navbar-container{
+	background: var(--ion-color-primary) !important;
   }
+
+.nextui-navbar-container{
+	border-radius: 0;
+	border-bottom-right-radius: 1rem;
+	border-bottom-left-radius: 1rem;
+}
   
-  ion-header {
-	--ion-background-color: var(--ion-color-light) !important;
-	
+.nextui-c-egxOLa {
+	max-width: 100% ;
+}
+
+  #darkside{
+	color: var(--ion-color-dark);
   }
-  
-  
+  #darkside:hover{
+	color: var(--ion-color-light);
+  }
+
+  #ldcard{
+	background: var(--ion-color-light);
+	border-color: var(--ion-color-dark);
+	box-shadow: none;
+  }
   
   #sidemenu{
 	  border: 0;
+  }
+
+  #texts{
+	color:var(--ion-color-light);
   }
   
   
@@ -150,6 +201,33 @@
 	display: none;
    }
   }
+  @media screen and (max-width: 427px) {
+	/* Styles to apply for screens 992 pixels or wider */
+   
+	#logox{
+		display: none;
+	}
+  }
+
+  @media screen and (min-width: 764px) {
+	/* Styles to apply for screens 992 pixels or wider */
+   
+	#sidex{
+		height: 100vh;
+	}
+  }
+
+  #sidex{
+	top: 0;
+    bottom: 0;
+	height: 100vh;
+	position: sticky;
+}
+
+.ps-sidebar-container{
+	background-color: var(--ion-color-light) !important;
+}
+  
   
   
   #showcard:hover {

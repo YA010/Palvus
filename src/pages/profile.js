@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
-import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonHeader, IonItem, IonLabel, IonMenuButton, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonItem, IonLabel, IonMenuButton, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 
 import { Grid } from '@mui/material';
 import moment from 'moment/moment';
@@ -31,21 +31,7 @@ export default function Profile () {
         <>
   
        {user ? (<> 
-        <IonHeader>
-  <IonToolbar>
-    <IonRow>
-
-   
-  <IonButtons >
-              <IonMenuButton></IonMenuButton>
-            </IonButtons>
-        <IonTitle style={{textAlign: "center", fontWeight:"700"}}>
-       Profile
-    </IonTitle>
-    </IonRow>
-    </IonToolbar>
-    </IonHeader>
-  
+    
        <IonGrid>
       
       
@@ -70,13 +56,90 @@ export default function Profile () {
       </IonCardContent>
     </IonCard>
     </IonCol>
+    <IonCol sizeXs='12'>
+<IonCard mode="ios" color="secondary" id="showcard">
 
+      <IonCardHeader id="amo">
+      <Avatar  variant="rounded">
+<img src={user.photoURL}/>
+</Avatar>
+      
+        
+      </IonCardHeader>
+      <IonCardContent>
+      <IonCardTitle id="title">{user.displayName}</IonCardTitle>
+      <IonCardSubtitle id="subtitle">@{user.email}</IonCardSubtitle>
+        <IonCardSubtitle id="subtitle">joined {moment(user.metadata.creationTime).fromNow()}</IonCardSubtitle>
+     
+      <IonButton onClick={() => signOut(auth)}>Log out</IonButton>
+      </IonCardContent>
+    </IonCard>
+    </IonCol>
+    <IonCol sizeXs='12'>
+<IonCard mode="ios" color="secondary" id="showcard">
+
+      <IonCardHeader id="amo">
+      <Avatar  variant="rounded">
+<img src={user.photoURL}/>
+</Avatar>
+      
+        
+      </IonCardHeader>
+      <IonCardContent>
+      <IonCardTitle id="title">{user.displayName}</IonCardTitle>
+      <IonCardSubtitle id="subtitle">@{user.email}</IonCardSubtitle>
+        <IonCardSubtitle id="subtitle">joined {moment(user.metadata.creationTime).fromNow()}</IonCardSubtitle>
+     
+      <IonButton onClick={() => signOut(auth)}>Log out</IonButton>
+      </IonCardContent>
+    </IonCard>
+    </IonCol> <IonCol sizeXs='12'>
+<IonCard mode="ios" color="secondary" id="showcard">
+
+      <IonCardHeader id="amo">
+      <Avatar  variant="rounded">
+<img src={user.photoURL}/>
+</Avatar>
+      
+        
+      </IonCardHeader>
+      <IonCardContent>
+      <IonCardTitle id="title">{user.displayName}</IonCardTitle>
+      <IonCardSubtitle id="subtitle">@{user.email}</IonCardSubtitle>
+        <IonCardSubtitle id="subtitle">joined {moment(user.metadata.creationTime).fromNow()}</IonCardSubtitle>
+     
+      <IonButton onClick={() => signOut(auth)}>Log out</IonButton>
+      </IonCardContent>
+    </IonCard>
+    </IonCol> <IonCol sizeXs='12'>
+<IonCard mode="ios" color="secondary" id="showcard">
+
+      <IonCardHeader id="amo">
+      <Avatar  variant="rounded">
+<img src={user.photoURL}/>
+</Avatar>
+      
+        
+      </IonCardHeader>
+      <IonCardContent>
+      <IonCardTitle id="title">{user.displayName}</IonCardTitle>
+      <IonCardSubtitle id="subtitle">@{user.email}</IonCardSubtitle>
+        <IonCardSubtitle id="subtitle">joined {moment(user.metadata.creationTime).fromNow()}</IonCardSubtitle>
+     
+      <IonButton onClick={() => signOut(auth)}>Log out</IonButton>
+      </IonCardContent>
+    </IonCard>
+    </IonCol>
   
    
     </IonRow>
     </IonGrid>
    
+  
+
+   
     </> )   : loading && !user ? <>  </> :(<>
+      
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         
@@ -110,6 +173,7 @@ export default function Profile () {
           </p>
         </div>
       </div> 
+     
      </> )}
          
    

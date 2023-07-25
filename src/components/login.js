@@ -85,7 +85,7 @@ export default function Login() {
         >
           <div class="w-max mx-auto flex items-center justify-center space-x-4">
            <Google color="primary"/>
-            <span class="block w-max text-sm font-semibold tracking-wide text-cyan-700 dark:text-white"
+            <span class="block w-max text-sm font-semibold tracking-wide text-grey-700 dark:text-white"
               >With Google</span
             >
           </div>
