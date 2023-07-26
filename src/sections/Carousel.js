@@ -2,6 +2,8 @@ import React from 'react';
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { createStyles, Paper, Text, Title, Button, useMantineTheme, rem } from '@mantine/core';
+import { IonBadge, IonButton } from '@ionic/react';
+import { Link, To } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -34,39 +36,41 @@ const useStyles = createStyles((theme) => ({
 const data = [
   {
     image:
-      'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Batman',
-    category: 'Story',
+      'https://ugc.futurelearn.com/uploads/images/d4/e8/d4e82da6-ca9d-4a4a-aa24-a4d70d004f49.jpg',
+    title: 'Life',
+    category: 'Riddle',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
+      'https://e0.pxfuel.com/wallpapers/386/777/desktop-wallpaper-world-history-6-mb.jpg',
     title: 'World History',
-    category: 'Study',
+    category: 'Riddle',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1608481337062-4093bf3ed404?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Mountains at night: 12 best locations to enjoy the view',
-    category: 'nature',
+      'https://cdn.theplaylist.net/wp-content/uploads/2016/04/14182739/20201-Most-Anticipated-TV-Series-Mini-Series-750x400.jpg',
+    title: 'Tv Shows',
+    category: 'Riddle',
+  },
+  
+  {
+    image:
+      'https://hd-report.com/wp-content/uploads/2021/01/best-4k-blu-ray-of-all-time-grid-1280.jpg',
+    title: 'Movies',
+    category: 'Riddle',
+  },
+  
+  {
+    image:
+      'https://e1.pxfuel.com/desktop-wallpaper/420/756/desktop-wallpaper-top-of-culture-culture-pack-v-586-pop-culture.jpg',
+    title: 'Pop culture',
+    category: 'Riddle',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Aurora in Norway: when to visit for best experience',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best places to visit this winter',
-    category: 'tourism',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1582721478779-0ae163c05a60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Active volcanos reviews: travel at your own risk',
-    category: 'nature',
+      'https://w0.peakpx.com/wallpaper/190/805/HD-wallpaper-dna-molecule-dna-neon-science-biology-dna.jpg',
+    title: 'Science',
+    category: 'Riddle',
   },
 ];
 
@@ -77,23 +81,24 @@ function Card({image, category, title}) {
   return (
     <Paper shadow="md" p="xl" radius="md" sx={{ backgroundImage: `url(${image})` }} className={classes.card}>
       <div>
-        <Text className={classes.category} size="xs">
+      <IonBadge id="darkside">
           {category} 
-        </Text>
+       </IonBadge>
 
         <Title order={3} className={classes.title}>
          {title}
         </Title>
       </div>
-
-      <Button variant="white" color="dark">
-        Read article
-      </Button>
+<Link to={`/riddle/${title}`}>
+      <IonButton id="darkside" >
+        Play
+      </IonButton>
+      </Link>
     </Paper>
   );
 }
 
- export default function CardsCarousel() {
+ export default function CardsCarousel(props) {
 
   const theme = useMantineTheme();
 
@@ -113,13 +118,13 @@ function Card({image, category, title}) {
   
 
     <Carousel 
-    style={{margin:"1vw"}}
-      controlsOffset="xs" controlSize={21} withIndicators
-      slideSize="50%" 
-      breakpoints={[{ maxWidth: 'sm', slideSize: '90%', slideGap: rem(2) }]}
+   
+      controlSize={21} withIndicators
+      slideSize="30%" 
+      orientation={props.ver}
       slideGap="xl" 
       align="start"
-      slidesToScroll={mobile ? 1 : 2}
+      slidesToScroll={mobile ? 1 : 1}
     >
       
 

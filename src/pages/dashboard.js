@@ -10,7 +10,7 @@ export default function Dashboard() {
 
 
    
-<CardsCarousel/>
+<CardsCarousel  style={{margin:"1vw"}}/>
 
 <Cards/>
 

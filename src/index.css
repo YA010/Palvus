@@ -29,26 +29,26 @@ body {
   
 
   :root {
-	  --ion-color-primary: rgb(255, 255, 255);
-	  --ion-color-primary-rgb: NaN,27,171;
-	  --ion-color-primary-contrast: #898989;
-	  --ion-color-primary-contrast-rgb: 209, 209, 209;
-	  --ion-color-primary-shade: #aaaaaa;
-	  --ion-color-primary-tint: #bebebe;
+	  --ion-color-primary: rgb(40, 176, 255);
+	  --ion-color-primary-rgb: #0178c7;
+	  --ion-color-primary-contrast: #001727;
+	  --ion-color-primary-contrast-rgb: #0178c7;
+	  --ion-color-primary-shade: #0178c7;
+	  --ion-color-primary-tint: #3c97ff;
   
-	  --ion-color-secondary: #f6f6f6;
+	  --ion-color-secondary: #2e2d2d;
 	  --ion-color-secondary-rgb: 29,29,32;
 	  --ion-color-secondary-contrast: #232323;
 	  --ion-color-secondary-contrast-rgb: 255,255,255;
 	  --ion-color-secondary-shade: #1a1a1c;
 	  --ion-color-secondary-tint: #343436;
   
-	  --ion-color-tertiary: #0f91ff;
-	  --ion-color-tertiary-rgb: 15,145,255;
-	  --ion-color-tertiary-contrast: #ffffff;
-	  --ion-color-tertiary-contrast-rgb: 255,255,255;
-	  --ion-color-tertiary-shade: #0d80e0;
-	  --ion-color-tertiary-tint: #279cff;
+	  --ion-color-tertiary: rgb(24, 151, 255);
+	  --ion-color-tertiary-rgb: #0178c7;
+	  --ion-color-tertiary-contrast: #001727;
+	  --ion-color-tertiary-contrast-rgb: #0178c7;
+	  --ion-color-tertiary-shade: #0178c7;
+	  --ion-color-tertiary-tint: #2e5677;
   
 	  --ion-color-success: #2b2b2b;
 	  --ion-color-success-rgb: 45,211,111;
@@ -118,8 +118,7 @@ body {
 	--ion-color-secondary-contrast: #ffffff;
 	--ion-color-primary: rgb(48, 48, 48);
 	--ion-color-dark: rgb(255, 255, 255);
-	--ion-color-success-contrast: #f5efef;
-	--ion-color-tertiary: black;
+	--ion-color-success-contrast: #20a6ff;
 	--ion-color-primary-contrast-rgb: 27, 171, 255;
 	--ion-color-light: rgb(34, 34, 34);
 	--ion-color-secondary: #2a2a2a;
@@ -145,12 +144,30 @@ body {
  
 .nextui-navbar-container{
 	background: var(--ion-color-primary) !important;
-  }
+}
 
 .nextui-navbar-container{
 	border-radius: 0;
 	border-bottom-right-radius: 1rem;
 	border-bottom-left-radius: 1rem;
+}
+
+#riddler{
+    background: var(--ion-color-tertiary) !important;
+  
+}
+.css-1p4evgx{
+	border-radius: 1rem;
+	margin: 2rem;
+}
+.css-vs27xc{
+	border-radius: 1rem;
+	margin: 2rem;
+}
+
+#answerit{
+	border-radius: 1vw;
+
 }
   
 .nextui-c-egxOLa {
@@ -230,6 +247,15 @@ body {
    
 	#sidex{
 		height: 100vh;
+	}
+  }
+
+  
+  @media screen and (max-width: 900px) {
+	/* Styles to apply for screens 992 pixels or wider */
+   
+	#riddlesidebar{
+		display:none
 	}
   }
 

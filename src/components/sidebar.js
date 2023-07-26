@@ -59,7 +59,6 @@ export default function Sidebarx() {
   
     return (
       <>
-        <Text align="center">Affix is located at the bottom of the screen, scroll to see it</Text>
         <Affix position={{ bottom: rem(20), right: rem(20) }}>
           <Transition transition="slide-up" mounted={scroll.y > 0}>
             {(transitionStyles) => (
@@ -187,7 +186,7 @@ return () =>{
 
   
   
-    <Navbar isBordered variant="sticky">
+    <Navbar style={{marginBottom:"1vw"}} isBordered variant="sticky">
     <Navbar.Content showIn="xs">
     <Dropdown placement="bottom-left">
             <Navbar.Item>
@@ -301,7 +300,7 @@ return () =>{
       
       </Navbar>
      
-        <Outlet/>
+        <Outlet />
        
 
 

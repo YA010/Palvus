@@ -15,6 +15,7 @@ import Sidebarx from './components/sidebar';
 import Dashboard from './pages/dashboard';
 import { NextUIProvider } from '@nextui-org/react';
 import { auth } from './components/firebase';
+import Riddles from './pages/Riddle';
 setupIonicReact();
 
 
@@ -66,7 +67,7 @@ function RenderApp() {
       ],
     },
     {
-      path: "/profile",
+      path: "/riddle/:id",
       element: <Sidebarx/>,
       errorElement: <ErrorPage/>,
      
@@ -76,7 +77,7 @@ function RenderApp() {
           children: [
             {
               index: true,
-              element: <Profile/>,
+              element: <Riddles/>,
             },
            
           ],
